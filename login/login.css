@@ -1,5 +1,5 @@
 body{
-    background-image:url('sneakers-2679705_640.jpg');
+    background-image:url('sports-equipment-on-a-black-background-sport-concept-copy-space-sports-equipment-on-a-dark-background-ai-generated-free-photo.jpg');
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-size:cover;
@@ -9,9 +9,9 @@ body{
 #continer{
     background-color:white;
     opacity:0.9;
-    width:450px;
-    height:350px;
-    display:flexboxS;
+    width:920px;
+    height:700px;
+    display:flex;
     flex-direction:row;
     margin:auto;
     margin-top:5%;
@@ -22,7 +22,29 @@ body{
 } 
 #form_continer{
     background-color:white;
-    opacity:0.9;
-    display:flexbox;
-    flex-direction:column;
+    opacity:0.8;
+    width:55%;
+    margin:auto;
+    text-align: center;
+}
+input{
+    padding:2% 8% 2% 8%;
+    margin-bottom:3%;
+}
+button{
+    padding:2% 5% 2% 5%;
+    margin-top:3%;
+    margin-bottom:5%;
+}
+button:hover{
+    background-color:rgb(65, 65, 82);
+    color:white;
+}
+a:hover{
+    color:black;
+}
+#inner_image{
+    border-radius:100%;
+    width:20%;
+    margin-bottom:10%;
 }
