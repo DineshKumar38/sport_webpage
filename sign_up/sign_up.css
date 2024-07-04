@@ -1,5 +1,8 @@
 body{
-    background-image:url('best-sports-1920-x-960-background-fp8ghjuhre4f6hi2.jpg');
+    background-image:url('360_F_114822960_n2cUHnEJrX3btCt7rpiYf4tfhw6rEE2r.jpg');
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 #continer{
     background-color:white;
@@ -31,13 +34,14 @@ body{
 button{
     padding:3% 8% 3% 8%;
     margin-top:10%;
+    background-color: black;
+    color:white
 }
 #inner_image{
-    border-radius:100%;
     width:20%;
     margin-bottom:10%;
 }
 button:hover{
-    background-color:rgb(65, 65, 82);
-    color:white;
+    background-color:rgb(91, 196, 238);
+    color:black;
 }
