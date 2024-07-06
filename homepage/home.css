@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 #continer{
@@ -37,28 +40,33 @@ a{
     font-size: 20px;
     color:black;
     text-decoration: none;
+    scroll-behavior: smooth;
 }
 a:hover{
     color:rgb(112, 204, 240);
 }
 #name{
-    margin-top:20%;
+    margin-top:15%;
     margin-left:8%;
     padding-bottom:20%;
     color:white;
-    animation: fadeInAnimation ease 3s;
 }
-@keyframes fadeInAnimation {
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity:1;
-    }
+#about_us{
+    display: flex;
+    flex-direction: row;
 }
 #about{
-    margin-top: 5%;
+    margin-top: 6%;
     margin-left:4%;
+    width:50%;
+}
+#about_b{
+    width:50%;
+    height:15%;
+    margin-top:8%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 #contact{
     margin-top:3%;
@@ -77,18 +85,12 @@ a:hover{
     color:black;
     background-color: rgb(112, 204, 240);
 }
-#info{
-    margin-left:50%;
-}
-.c_info{
-    padding-left:30px;
-}
 #gallary{
     display:flex;
     flex-direction:row;
-    margin-left:10%;
+    margin-left:4%;
     margin-bottom:5%;
-    margin-top:5%;
+    margin-top:3%;
 }
 
 .redBox {
@@ -105,4 +107,10 @@ a:hover{
 
 .c_img1 {
     position: relative;
+}
+#info{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top:5%;
 }
