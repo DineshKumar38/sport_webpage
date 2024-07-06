@@ -5,9 +5,15 @@
         <link rel="icon" href="athletics(1).png">
 
         <link rel="stylesheet" href="home.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
     <body>
+        <div id="preloader">
+
+        </div>
+
         <div id="continer">
             <div id="navbar">
                 <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
@@ -16,7 +22,7 @@
                     <ul>
                         <li><a href="#">Home</a></li> 
                         <li><a href="#">Events and athletes</a></li>
-                        <li><a href="#">Gallery</a></li> 
+                        <li><a href="gallery.html">Gallery</a></li> 
                         <li><a href="#about_us">About us</a></li> 
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -54,20 +60,26 @@
 
             <div>
                 <p style="color:rgb(104, 202, 241); font-size:40px;">Immortals Gallery</p>
-                <p style="font-size:30px;margin-top:3%; display:flex; justify-content: center;">"If you don't think photos are important, wait until they are all you have left."</p>
+                <p style="font-size:30px;margin-top:3%; display:flex; justify-content: center;">"If you don't think photos are important, wait until they are all you have left."</p> 
             </div>
         </div>-->
         <!--<hr style="width:80%; margin-top:3%; margin-left:auto; margin-right:auto; text-align: center;">-->
-        <div style="margin-top:1%; display:flex; text-align: center; font-size:30px; flex-direction :column; margin-top:6%; font-style: italic; text-transform: lowercase;">
+        <div style="margin-top:1%; display:flex; text-align: center; font-size:30px; flex-direction :column; margin-top:6%; font-style: italic; text-transform: lowercase; color:skyblue;">
             <p>"IF YOU WANT TO BE THE BEST,</p> 
             <p>YOU HAVE TOO DO THE THINGS THAT</p> 
             <p>OTHER PEOPLE AREN'T WILLING TO DO"</p>
         </div>
 
         <div id="info">
-            <a style="padding-bottom:2%; padding-left:2%;"><img src="instagram-5-32.png"></a>
-            <a style="padding-bottom:2%; padding-left:2%;"><img src="message-32.png"></a>
+            <a style="padding-bottom:2%; padding-left:2%;" href="https://www.instagram.com/tce_immortals/"><img src="instagram-5-32.png"></a>
+            <a style="padding-bottom:2%; padding-left:2%;" href="mailto:dk3fistball@gmail.com"><img src="message-32.png"></a>
             <!--<a style="padding-bottom:2%; padding-left:2%;"><img src="phone-32.png"></a>-->
         </div>
+
+        <script>
+            $("document").ready(function(){
+                alert("hello");
+            })
+        </script>
     </body>
 </html>
