@@ -5,9 +5,13 @@
         <link rel="icon" href="athletics(1).png">
 
         <link rel="stylesheet" href="contact.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     </head>
 
     <body>
+        <div id="preloader"></div>
+
         <div>
             <div id="navbar">
                 <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
@@ -15,7 +19,7 @@
                 <nav>
                     <ul>
                         <li><a href="home.html">Home</a></li> 
-                        <li><a href="#">Events and athletes</a></li>
+                        <li><a href="event.html">Events and athletes</a></li>
                         <li><a href="gallery.html">Gallery</a></li> 
                         <li><a href="home.html">About us</a></li> 
                         <li><a href="#">Contact</a></li>
@@ -27,12 +31,18 @@
                 <div id="form_continer">
                     
                     <img src="athletics(1).png" id="inner_image">
-                    <form>
-                        <input type="email" name="email" placeholder="EMAIL"><br>
 
-                        <input type="user" name="user" placeholder="NAME"><br>
+                    <form action="https://api.web3forms.com/submit" method="POST">
 
-                        <textarea placeholder="feedback"></textarea><br>
+                        <input type="hidden" name="access_key" value="318c024d-6d3b-4b4f-b9f3-b663c40d2cac">
+
+                        <input type="email" name="email" placeholder="EMAIL" required><br>
+
+                        <input type="text" name="user" placeholder="NAME" required><br>
+
+                        <input type="text" name="subject" placeholder="SUBJECT"><br>
+
+                        <textarea placeholder="FEEDBACK" required></textarea><br>
                         
                         <button type="submit">Send</button>
                     </form>
@@ -50,5 +60,11 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            $(window).on("load",function(){
+                $("#preloader").fadeOut();
+            });
+        </script>
     </body>
 </html>
