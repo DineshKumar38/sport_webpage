@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <link rel="icon" href="athletics(1).png">
+
+    <link rel="stylesheet" href="admin.css"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="preloader"></div>
+
+        <div id="continer">
+            <div id="navbar">
+                <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+
+                <nav>
+                    <ul> 
+                        <li><h3 style="color:skyblue">Admin Page</h3></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div id="name">
+                <p style="font-size:40px; font-weight: bold;" class="name1">TEAM<br>IMMORTALS</p>
+
+                <span style="font-size:20px; font-weight: bold; color:rgb(112, 204, 240);" class="name1">Train | Compete | Conquer</span><br>
+
+            </div>
+
+            <ul class="acco">
+
+                <li>
+                    <label for="1">Events and Athletes<span>&#x3e</span></label>
+
+                    <input type="radio" name="acco" id="1" >
+
+                    <div class="content">
+                        <h2><a href="#">Sprinter's</a></h2>
+                        <h2><a href="#">Jumper's</a></h2>
+                        <h2><a href="#">Thrower's</a></h2>
+                        <h2><a href="#">Long Distance Runner's</a></h2>
+                        <h2><a href="#">Deca & Hepta</a></h2>
+                        <h2><a href="#">Mid Distance Runner's</a></h2>
+                    </div>
+                </li>
+
+                <li>
+                    <label for="2">Gallery<span>&#x3e;</span></label>
+
+                    <input type="radio" name="acco" id="2">
+
+                    <div class="content">
+                        <h2><a href="#">Alumni Meet</a></h2>
+                        <h2><a href="#">Zone & Inter-Zone competation</a></h2>
+                        <h2><a href="#">Inter-Department competation</a></h2>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <script>
+            $(window).on("load",function(){
+                $("#preloader").fadeOut();
+            });
+        </script>
+</body>
+</html>
