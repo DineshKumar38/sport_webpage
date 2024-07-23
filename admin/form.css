@@ -11,7 +11,7 @@ html{
     scroll-behavior: smooth;
 }
 #continer{
-    background-image:url("T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg");
+    background-image:url("/assets/T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover ;
@@ -39,7 +39,7 @@ ul{
     vertical-align: middle;
 }
 body{
-    background-image: url("image.jpg");
+    background-image: url("/assets/T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg");
 }
 #form{
     background: transparent;

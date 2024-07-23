@@ -41,7 +41,7 @@ ul{
     vertical-align: middle;
 }
 body{
-    background-image: url("image.jpg");
+    background-image: url("/assets/T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg");
     overflow: hidden;
 }
 .input{
@@ -58,7 +58,7 @@ body{
     margin:4% 4% 8% 4%;
 }
 #preloader{
-    background: white url("ninja.gif") no-repeat center center;
+    background: white url("/assets/ninja.gif") no-repeat center center;
     background-size: 12%;
     position:fixed;
     height: 100vh;
