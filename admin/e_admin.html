@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <link rel="icon" href="athletics(1).png">
+
+    <link rel="stylesheet" href="e_admin.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="preloader"></div>
+
+    <div id="continer">
+        <div id="navbar">
+            <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="g_admin.html" style="text-decoration:none; font-weight:bold; color:skyblue;">Gallery</a>
+                    </li>
+
+                    <li>
+                        <h3 style="color:skyblue">Admin Page</h3>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div id="new">
+            <a href="./form.html  ">
+
+                <button type="submit" id="new_b"> New +</button>
+            </a>
+        </div>
+        <div id="get_form">
+            <p style="color: white;">Loding... Please Wait</p>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(window).on("load", function () {
+            $("#preloader").fadeOut();
+        });
+
+    </script>
+
+    <script>
+        const getAllUserData = async () => {
+
+            const ulElement = document.querySelector('#get_form')
+            const res = await fetch('http://localhost:3000/user/getAll')
+            const result = await res.json()
+
+            console.log(result)
+
+
+            const liElement = result.map((user) => {
+                return ` <details class="content">
+                                <summary for="1" style="font-weight:bold;"> ${user.name}</summary>
+            
+                                <div class="content">
+                                    <p>${user.dob}</p>
+                                    <h3> ${user.category} </h3>
+                                
+                                 ${user.performance.map((athletes) => {
+
+                    return `<li style="padding-top: 2%;"> Event name: ${athletes.name} performance: ${athletes.result}   </li>`
+                })}
+                                    <div class="btn-div">
+                                        <button type="submit" onclick="update('${user.regno}')"  id="update">update</button>
+                                    <button type="submit" onclick="deleteUser('${user.regno}')" id="delete">delete</button>
+                                    </div>
+                                </div>
+                            </details>`
+            });
+
+            ulElement.innerHTML = liElement;
+        }
+
+        getAllUserData();
+
+        const update = async (id) => {
+
+            const name = prompt("Enter Event Name and Result")
+
+            const result = prompt("Enter Result");
+
+            const performance = {
+                name,
+                result,
+            }
+         console.log(performance)
+
+
+            try {
+
+                const res = await fetch(`http://localhost:3000/user/update/${id}`, {
+                    method:'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(performance)
+                })
+
+                const data = res.json();
+
+
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+
+                alert('User data submitted successfully!');
+                window.location.reload();
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to submit user data. Please try again.');
+            }
+        }
+
+
+        const deleteUser = async (id) => {
+            try {
+                const res = await fetch(`http://localhost:3000/user/delete/${id}`, {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await res.json();
+                console.log(result?.message);
+
+                // Handle success scenario (e.g., show success message, clear form fields)
+                alert('User data submitted successfully!');
+                location.reload();
+
+                // Reset the form fields
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error scenario (e.g., show error message)
+                alert('Failed to submit user data. Please try again.');
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+    <link rel="icon" href="athletics(1).png">
+    <link rel="stylesheet" href="form.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="continer">
+        <div id="navbar">
+            <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+            <nav>
+                <ul> 
+                    <li><h3 style="color: skyblue">Admin Page</h3></li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <h1 style="color: white; margin-bottom: 3%; margin-top: 3%; text-align: center;">Events & Athletes</h1>
+            <hr style="width: 50%; align-items: center; margin: 0% auto 0% auto;">
+        </div>
+        <div id="form">
+            <form id="myForm">
+                <input id="name" placeholder="Name"><br>
+                <input id="reg" placeholder="Register no"><br>
+                <input id="dob" type="date" placeholder="Date of Birth" name="dob"><br>
+                <label for="dob">DOB</label>
+                <select id="sel">
+                    <option>sprinter</option>
+                    <option>jumper</option>
+                    <option>long distance runner</option>
+                    <option>mid distance runner</option>
+                    <option>thrower</option>
+                    <option>Deca or hepta</option>
+                </select>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+                
+            const name = document.getElementById('name').value;
+            const regno = document.getElementById('reg').value;
+            const dob = document.getElementById('dob').value;
+            const category = document.getElementById('sel').value;
+
+            const data = {
+                name,
+                regno,
+                dob,
+                category,
+            };
+
+            try {
+                const res = await fetch("http://localhost:3000/user/createUserDate", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await res.json();
+                console.log(result?.message);
+
+                // Handle success scenario (e.g., show success message, clear form fields)
+                alert('User data submitted successfully!');
+                document.getElementById('myForm').reset(); 
+                window.location.href = 'http://127.0.0.1:5501/admin/e_admin.html';
+
+                // Reset the form fields
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error scenario (e.g., show error message)
+                alert('Failed to submit user data. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>

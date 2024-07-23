@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <link rel="icon" href="athletics(1).png">
+
+    <link rel="stylesheet" href="g_admin.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="preloader"></div>
+
+    <div id="continer">
+        <div id="navbar">
+            <img src="large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="e_admin.html" style="text-decoration:none; font-weight:bold; color:skyblue;">Events</a>
+                    </li>
+
+                    <li>
+                        <h3 style="color:skyblue">Admin Page</h3>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="input">
+            <form>
+                <select id="sel">
+                    <option>Alumni meet</option>
+                    <option>zone & interzone</option>
+                    <option>inter-department</option>
+                </select>
+
+                <input type="file" style="margin-left:3%;">
+            </form>
+        </div>
+    </div>
+    <script>
+        $(window).on("load", function () {
+            $("#preloader").fadeOut();
+        });
+
+    </script>
+</body>
+</html>

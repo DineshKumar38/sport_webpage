@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Immortals</title>
+
+    <link rel="icon" href="/assets/athletics(1).png">
+
+    <link rel="stylesheet" href="home.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/d8de47dd43.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div id="preloader"></div>
+
+    <div id="continer">
+        <div id="navbar">
+            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/events_and_atheletes/event.html">Events and athletes</a></li>
+                    <li><a href="/gallery/gallery.html">Gallery</a></li>
+                    <li><a href="#about_us" style="scroll-behavior: smooth;">About us</a></li>
+                    <li><a href="/contact/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="name">
+            <p style="font-size:80px; font-weight: bold;" class="name1">TEAM<br>IMMORTALS</p>
+
+            <span style="font-size:20px; font-weight: bold; color:rgb(112, 204, 240);" class="name1">Train | Compete |
+                Conquer</span><br>
+        </div>
+    </div>
+
+    <section class="hidden">
+        <div id="about_us">
+            <div id="about">
+                <span style="font-size:80px; font-weight: bold;color:rgb(104, 202, 241);">About Us</span><br>
+
+                <p style="font-size: 25px;padding:3% 3% 3% 0%"> Team <b>Immortals</b> are athletes who represent
+                    <b>Thiagarajar College of Engineering, Madurai</b> in major athletic events and have won medals in
+                    various competitions. They also compete for the college in the <b>Anna University Zone 16</b>. In
+                    addition, they organize events within the college campus with the help of <b>THIDALS</b>, a sports
+                    organizing and development committee at TCE. Some athletes from the team also contribute to
+                    <b>THIDALS</b> in organizing other sports events.
+                </p>
+            </div>
+            <div id="about_b">
+                <img src="/assets/44246918_306634493500352_706360469313594450_n.jpg"
+                    style="height:400px; border-radius: 10% 0% 10% 0%;">
+            </div>
+        </div>
+    </section>
+
+    <!--<div id="gallary">
+            <div class="c_img1" style="height: 300px; width: 500px;">
+
+                    <h1 style="position: absolute; top: 20px; left: 25px; z-index: 10;color:white;">GALLERY</h1>
+
+                    <div class="redBox" style="position: absolute; top: 0; left: 0; z-index: 5;"></div>
+
+                    <img src="image.jpg" alt="" style="position: absolute; top: 0; left: 0; width: 450px; height:300px;">
+            </div>
+
+            <div>
+                <p style="color:rgb(104, 202, 241); font-size:40px;">Immortals Gallery</p>
+                <p style="font-size:30px;margin-top:3%; display:flex; justify-content: center;">"If you don't think photos are important, wait until they are all you have left."</p> 
+            </div>
+        </div>-->
+    <!--<hr style="width:80%; margin-top:3%; margin-left:auto; margin-right:auto; text-align: center;">-->
+    <section class="hidden">
+        <div
+            style="margin-top:1%; display:flex; text-align: center; font-size:30px; flex-direction :column; margin-top:6%; font-style: italic; text-transform: lowercase; color:skyblue;">
+            <p>"IF YOU WANT TO BE THE BEST,</p>
+            <p>YOU HAVE TOO DO THE THINGS THAT</p>
+            <p>OTHER PEOPLE AREN'T WILLING TO DO"</p>
+        </div>
+    </section>
+
+    <hr style="width:80%; margin:5% auto 5% auto;">
+
+    <div class="hidden" style="width: 100%;">
+        <h4 style="margin-bottom:2%; text-align: center;">Developed By<br> Department of Computer Science and Engineering <br> Batch 2021-2025</h4>
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div style="display: flex; align-items: center; justify-content: space-between; width: 50%;">
+                <p style="display: flex; flex-direction: column; align-items: center; height: 20px;"><span>Dineshkumar S</span> <span>(Frontend)</span></p>
+                <p style="display: flex; flex-direction: column; align-items: center; height: 20px;"><span>Sakthi M</span> <span>(Backend)</span></p>
+                <p style="display: flex; flex-direction: column; align-items: center; height: 20px;"><span>Venkadesh S</span> <span>(Backend)</span></p>
+            </div>
+        </div>
+    </div>
+
+    <section class="hidden">
+        <div id="info">
+            <a href="https://www.instagram.com/tce_immortals/" style="padding-bottom:2%; padding-left:2%;"
+                target="_blank"><i class="fa-brands fa-instagram" style="color: skyblue; font-size: 30px;"></i></a>
+            <a href="mailto:dk3fistball@gmail.com" style="padding-bottom:2%; padding-left:2%;" target="_blank"><i
+                    class="fa-regular fa-envelope style=" padding-bottom:2%; padding-left:2%;""
+                    style="color: skyblue; font-size: 30px;"></i></a>
+            <!-- <a style=" href="https://www.instagram.com/tce_immortals/"><img src="instagram-5-32.png"></a>
+                <a style=" href="mailto:dk3fistball@gmail.com"><img src="message-32.png"></a> -->
+            <!--<a style="><img src="phone-32.png"></a>-->
+        </div>
+    </section>
+
+    <script>
+        $(window).on("load", function () {
+            $("#preloader").fadeOut();
+        });
+    </script>
+
+    <script>
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+                else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const hide = document.querySelectorAll('.hidden');
+        hide.forEach((el) => obs.observe(el));
+    </script>
+</body>
+
+</html>

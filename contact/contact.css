@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-image:url('sports-background-runner-side-view-600nw-296029316.webp');
+    background-image:url('/assets/T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg');
     background-repeat:no-repeat;
     background-attachment:fixed;
     background-size:cover;
@@ -24,6 +24,7 @@ body::-webkit-scrollbar{
     flex-direction:row;
     margin:auto;
     margin-top:6%;
+    margin-bottom: 5%;
     animation-name: slide_up;
     animation-duration: 1s;
 }
@@ -121,7 +122,7 @@ a:hover{
     margin-top:5%;
 }
 #preloader{
-    background: white url("ninja.gif") no-repeat center center;
+    background: white url("/assets/ninja.gif") no-repeat center center;
     background-size: 12%;
     position:fixed;
     height: 100vh;
