@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Immortals</title>
 
     <link rel="icon" href="/assets/athletics(1).png">
@@ -19,14 +22,20 @@
         <div id="navbar">
             <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
 
-            <nav>
-                <ul>
+            <nav class="nav">
+                <ul class="nav">
                     <li><a href="#">Home</a></li>
                     <li><a href="/events_and_atheletes/event.html">Events and athletes</a></li>
                     <li><a href="/gallery/gallery.html">Gallery</a></li>
                     <li><a href="#about_us" style="scroll-behavior: smooth;">About us</a></li>
                     <li><a href="/contact/contact.html">Contact</a></li>
                 </ul>
+
+                <div class="menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
             </nav>
         </div>
 
@@ -53,7 +62,7 @@
             </div>
             <div id="about_b">
                 <img src="/assets/44246918_306634493500352_706360469313594450_n.jpg"
-                    style="height:400px; border-radius: 10% 0% 10% 0%;">
+                    style=" border-radius: 10% 0% 10% 0%;">
             </div>
         </div>
     </section>
@@ -61,7 +70,7 @@
     <!--<div id="gallary">
             <div class="c_img1" style="height: 300px; width: 500px;">
 
-                    <h1 style="position: absolute; top: 20px; left: 25px; z-index: 10;color:white;">GALLERY</h1>
+                    <h1 style="position: absolute; top: 20px; left: 25px; z-index: 10;">GALLERY</h1>
 
                     <div class="redBox" style="position: absolute; top: 0; left: 0; z-index: 5;"></div>
 
@@ -129,6 +138,14 @@
 
         const hide = document.querySelectorAll('.hidden');
         hide.forEach((el) => obs.observe(el));
+    </script>
+
+    <script>
+        const menu=document.querySelector('.menu');
+        const menuL=document.querySelector('.nav');
+        menu.addEventListener('click',()=>{
+            menuL.classList.toggle('show')
+        })
     </script>
 </body>
 

@@ -18,12 +18,14 @@
 
     <div id="continer">
         <div id="navbar">
-            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg"
+                id="logo">
 
             <nav>
                 <ul>
                     <li>
-                        <a href="g_admin.html" style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Gallery</a>
+                        <a href="g_admin.html"
+                            style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Gallery</a>
                     </li>
 
                     <li>
@@ -73,7 +75,7 @@
                                  ${user.performance.map((athletes) => {
 
                     return `<li style="padding-top: 2%;"> Event name: ${athletes.name} performance: ${athletes.result}   </li>`
-                })}
+                }).join('')}
                                     <div class="btn-div">
                                         <button type="submit" onclick="update('${user.regno}')"  id="update">update</button>
                                     <button type="submit" onclick="deleteUser('${user.regno}')" id="delete">delete</button>
@@ -97,13 +99,13 @@
                 name,
                 result,
             }
-         console.log(performance)
+            console.log(performance)
 
 
             try {
 
                 const res = await fetch(`http://localhost:3000/user/update/${id}`, {
-                    method:'PUT',
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -112,11 +114,9 @@
 
                 const data = res.json();
 
-
                 if (!res.ok) {
                     throw new Error('Network response was not ok');
                 }
-
 
                 alert('User data submitted successfully!');
                 window.location.reload();

@@ -27,9 +27,11 @@ html{
     align-items: center;
     background-color: white;
     opacity:1;
+    width: 100%;
 }
 ul{
     list-style-type: none;
+    width: 100%;
 }
  ul li{
     display:inline-block;
@@ -78,12 +80,12 @@ a:hover{
     width:50%;
 }
 #about_b{
-    width:50%;
+    width:40%;
     height:15%;
-    margin-top:8%;
-    display:flex;
+    margin-top:15%;
+    /* display:flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 #contact{
     margin-top:3%;
@@ -150,4 +152,55 @@ a:hover{
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
+}
+.line{
+    height:3px;
+    width: 20px;
+    background-color: black;
+    margin-bottom: 3px;
+}
+.menu{
+    display: none;
+    cursor: pointer;
+}
+@media screen and (max-width:850px){
+    #navbar{
+        display:flex;
+        flex-direction:column;
+    }
+    ul li{
+        text-align: center;
+        display:block;
+        padding:10px 0px;
+        display: none;
+    }
+    #logo{
+        align-self: flex-start;
+        margin: 10px 10px 10px 10px;
+    }
+    .menu{
+        display: block;
+        position: absolute;
+        right: 20px;
+        top:25px;
+    }
+    .show{
+        display: block;
+    }
+    #about_us{
+        display: flex;
+        flex-direction: column;
+    }
+    #about_b{
+        width:70%;
+        height:15%;
+        margin:8% 0% 8% 15%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #about{
+        margin-top: 8% 4% 8% 4%;
+        width:100%;
+    }
 }

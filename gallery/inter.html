@@ -42,7 +42,7 @@
         </div>
 
         <div id="image_con">
-            <div id="main_box">
+            <!-- <div id="main_box">
                 <div class="box">
                     <img src="/image3/image(1).jpg">
 
@@ -60,11 +60,32 @@
 
                     <img src="/image3/image(6).jpg">
                 </div>
+            </div> -->
+            <div id="image-box">
             </div>
         </div>
+        
 
         <script>
-            $(window).on("load",function(){
+            $(window).on("load",async function(){
+                await fetch("http://localhost:3000/img/downloadImage", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({"folder": 2})
+                }).then(res => {
+                    const data = res.json();
+                    data.then(output => {
+                        console.log(output);
+                        output.map(({id, text}) => {
+                            console.log(id);
+                            $("#image-box").append(
+                                `<img src="https://lh3.googleusercontent.com/d/${id}" alt="image" />`
+                            );
+                        })
+                    })
+                })
                 $("#preloader").fadeOut();
             });
         </script>

@@ -60,4 +60,5 @@ body::-webkit-scrollbar{
     flex-direction: column;
     background-color:white;
     padding:20px ;
+    color:black;
 }

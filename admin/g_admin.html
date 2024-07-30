@@ -32,19 +32,37 @@
         </div>
         <div class="input">
             <form>
+                <input type="text" placeholder="Enter a Image Name" id="uniqueName">
                 <select id="sel">
-                    <option>Alumni meet</option>
-                    <option>zone & interzone</option>
-                    <option>inter-department</option>
+                    <option value=0>Alumni meet</option>
+                    <option value=1>zone & interzone</option>
+                    <option value=2>inter-department</option>
                 </select>
 
-                <input type="file" style="margin-left:3%;">
+                <input type="file" style="margin-left:3%;" id="file">
+                <button type="button" id="button">SUBMIT</button>
             </form>
         </div>
     </div>
     <script>
         $(window).on("load", function () {
             $("#preloader").fadeOut();
+        });
+
+        $("#button").on('click', async function() {
+            var formData = new FormData();
+            formData.append("uniqueName", document.getElementById("uniqueName").value);
+            formData.append("image", document.getElementById("file").files[0]);     
+            formData.append("folder", document.getElementById("sel").value);    
+            console.log(formData);   
+            await fetch("http://localhost:3000/img/uploadimage", {
+                method: "POST",
+                body: formData
+            }).then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            });
         });
 
     </script>

@@ -43,6 +43,7 @@ ul{
 body{
     background-image: url("/assets/T-Sprint_BW_crop2e_light_smaller-uai-1579x1052.jpg");
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     overflow-x: hidden;
 }
@@ -56,7 +57,7 @@ body{
 }
 button{
     padding:1% 2% 1% 2%;
-    margin:2% 1% 2% 0%;
+    margin:2% 5% 2% 0%;
     background-color: black;
     color:white;
     font-weight:bold;
@@ -72,6 +73,8 @@ button:hover{
 #new_b{
     color:black;
     background:white;
+    display: flex;
+    justify-content: end;
 }
 #new_b:hover{
     background-color: skyblue;
@@ -97,4 +100,9 @@ button:hover{
     height: 100vh;
     width: 100%;
     z-index: 5;
+}
+@media screen and (max-width:480px){
+    #new_b{
+        margin:5% 2% 5% 0%;
+    }
 }

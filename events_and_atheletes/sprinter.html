@@ -15,14 +15,15 @@
 
     <div id="continer">
         <div id="navbar">
-            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg" id="logo">
+            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg"
+                id="logo">
 
             <nav>
                 <ul>
-                    <li><a href="/home.html">Home</a></li> 
+                    <li><a href="/home.html">Home</a></li>
                     <li><a href="/events_and_atheletes/event.html">Events and athletes</a></li>
-                    <li><a href="/gallery/gallery.html">Gallery</a></li> 
-                    <li><a href="/home.html">About us</a></li> 
+                    <li><a href="/gallery/gallery.html">Gallery</a></li>
+                    <li><a href="/home.html">About us</a></li>
                     <li><a href="/contact/contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -44,36 +45,35 @@
 
     </div>
 
-        <script>
-            const getAllUserData=async()=>{
+    <script>
+        const getAllUserData = async () => {
 
-                    const  ulElement  =document.querySelector('#get_form')
-                     const res=await fetch('http://localhost:3000/user/category/sprinter')
-                     const result=await res.json()
+            const ulElement = document.querySelector('#get_form')
+            const res = await fetch('http://localhost:3000/user/category/sprinter')
+            const result = await res.json()
 
-                     console.log(ulElement)
+            console.log(ulElement)
 
 
-                    const liElement=result.map( (user)=>{
-                          return ` <details class="content">
+            const liElement = result.map((user) => {
+                return `<details class="content" style="margin-bottom: 20px;">
                             <summary for="1" style="font-weight:bold;"> ${user.name}</summary>
         
                             <div class="content">
                                 <h3> ${user.category} </h3>
-                             ${ user.performance.map((athletes)=>{
-                                     
-                                    return `<li style="padding-top: 2%;"> Event name: ${athletes.name} performance: ${athletes.result}  </li>`
-                                }) }
+                                    ${user.performance.map((athletes) => {
+                                        return `<li style="padding-top: 2%;"> Event name: ${athletes.name} performance: ${athletes.result}</li>`
+                                    }).join('')}
                             </div>
                         </details>`
-                     }); 
+            });
 
-                     ulElement.innerHTML=liElement;
-            }
+            ulElement.innerHTML = liElement.join('');
+        }
 
-            getAllUserData();
+        getAllUserData();
 
-          
+
     </script>
 </body>
 
