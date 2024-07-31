@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,10 @@
 
     <link rel="icon" href="/assets/athletics(1).png">
 
-    <link rel="stylesheet" href="e_admin.css">
+    <link rel="stylesheet" href="attend.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-
 <body>
     <div id="preloader"></div>
 
@@ -29,25 +27,41 @@
                     </li>
 
                     <li>
-                        <a href="attend.html"
-                            style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Attendance</a>
+                        <a href="e_admin.html"
+                        style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Events</a>                        
+                    </li>
+
+                    <li>
+                        <a href="show.html"
+                        style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">show</a>                        
                     </li>
                 </ul>
             </nav>
         </div>
 
-        <h1 style="color:aliceblue; text-align:center; margin:2% 0% 2% 0%;">Events</h1>
+        <h1 style="color:aliceblue; text-align:center; margin:2% 0% 2% 0%;">Attendance</h1>
         <hr style="width:70%; margin:0% auto 0% auto;">
 
-        <div id="new">
-            <a href="./form.html  ">
+        <div id="show">
+            <div style="margin-right:2%;">
+                <input type="radio" name="morning" value="morning">
+                <label for="morning" >Morning</label>
+            </div>
 
-                <button type="submit" id="new_b"> New +</button>
-            </a>
+            <div>
+                <input type="radio" name="morning" value="evening">
+                <label for="morning" >Evening</label>
+            </div>
         </div>
+
+
         <div id="get_form">
             <p style="color: white;">Loding... Please Wait</p>
 
+        </div>
+
+        <div style="display:flex; justify-content:center;">
+            <button type="submit" style="padding:.5% 1% .5% 1%;">submit</button>
         </div>
     </div>
 
@@ -58,6 +72,7 @@
 
     </script>
 
+    
     <script>
         const getAllUserData = async () => {
 
@@ -80,10 +95,10 @@
 
                     return `<li style="padding-top: 2%;"> Event name: ${athletes.name} performance: ${athletes.result}   </li>`
                 }).join('')}
-                                    <div class="btn-div">
-                                        <button type="submit" onclick="update('${user.regno}')"  id="update">update</button>
-                                    <button type="submit" onclick="deleteUser('${user.regno}')" id="delete">delete</button>
-                                    </div>
+                                <div class="btn-div">
+                                        <button type="radio" id="present">present</button>
+                                        <button type="radio" id="absent">absent</button>
+                                    </div> 
                                 </div>
                             </details>`
             });
@@ -162,8 +177,6 @@
 
         }
     </script>
-
-
+    
 </body>
-
 </html>

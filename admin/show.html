@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin page</title>
+
+    <link rel="icon" href="/assets/athletics(1).png">
+
+    <link rel="stylesheet" href="attend.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="preloader"></div>
+
+    <div id="continer">
+        <div id="navbar">
+            <img src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg"
+                id="logo">
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="g_admin.html"
+                            style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Gallery</a>
+                    </li>
+                        
+                    <li>
+                        <a href="e_admin.html"
+                        style="text-decoration:none; font-weight:bold; color:skyblue; font-size:larger;">Events</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <h1 style="color:aliceblue; text-align:center; margin:2% 0% 2% 0%;">Attendance</h1>
+        <hr style="width:70%; margin:0% auto 0% auto;">
+
+        <div id="update">
+            <input style="padding:.5% 1% .5% 1%;margin-right:1%;" type="date">
+            <button style="padding:.5% 1% .5% 1%;"><a href="show.html">show</a></button>
+        </div>
+
+        <div style="display:flex; justify-content:center;">
+            <button type="submit" style="padding:.5% 1% .5% 1%;">update</button>
+        </div>
+    </div>
+
+    <script>
+        $(window).on("load", function () {
+            $("#preloader").fadeOut();
+        });
+
+    </script>
+</body>
+</html>
