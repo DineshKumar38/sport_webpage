@@ -68,7 +68,9 @@
         
         <script>
             $(window).on("load",async function(){
-                await fetch("http://localhost:3000/img/downloadImage", {
+                // const api = "https://immortals-backend.onrender.com/img/downloadImage";
+                const api = "http://localhost:3000/img/downloadImage";
+                await fetch(api, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

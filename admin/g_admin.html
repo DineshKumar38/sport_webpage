@@ -60,7 +60,8 @@
             formData.append("image", document.getElementById("file").files[0]);     
             formData.append("folder", document.getElementById("sel").value);    
             console.log(formData);   
-            await fetch("http://localhost:3000/img/uploadimage", {
+            const api = "http://localhost:3000/img/uploadimage";
+            await fetch(api, {
                 method: "POST",
                 body: formData
             }).then(res => {
