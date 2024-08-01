@@ -48,14 +48,16 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin:10% 30% 10% 30%;
-    padding: 8% 5% 10% 13%;
-    background-color: white;
-    opacity:.8;
+    /* padding: 8% 5% 10% 13%; */
 }
 #sel{
-    padding:2% 2% 2% 2%;
-    margin:4% 4% 8% 4%;
+    width:40%;
+    margin:4% 4% 4% 4%;
+    display: flex;
+    justify-self: center;
+    align-items: center;
 }
 #preloader{
     background: white url("/assets/ninja.gif") no-repeat center center;
