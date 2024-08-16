@@ -1,191 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin page</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .student-list {
+            margin-top: 20px;
+        }
+        .student-item {
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .view-attendance-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .attendance-list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
-    <link rel="icon" href="/assets/athletics(1).png" />
+    <h1>Student Attendance</h1>
+    <div class="timing-options">
+        <label>
+            <input type="radio" name="timing" value="morning">
+            Morning
+        </label>
+        <label>
+            <input type="radio" name="timing" value="evening">
+            Evening
+        </label>
+    </div>
+    <div id="studentList" class="student-list">
+        <!-- Student list will be populated here -->
+    </div>
+    <button id="submitBtn" class="submit-btn">Submit Attendance</button>
+    <button id="viewAttendanceBtn" class="view-attendance-btn">View Today's Attendance</button>
 
-    <link rel="stylesheet" href="attend.css" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <div id="preloader"></div>
-
-    <div id="continer">
-      <div id="navbar">
-        <img
-          src="/assets/large_Thiagarajar_College_of_Engineering_Madurai_TCE_Madurai_abe5a03419_32ff1ba110.jpg"
-          id="logo"
-        />
-
-        <nav>
-          <ul>
-            <li>
-              <a
-                href="g_admin.html"
-                style="
-                  text-decoration: none;
-                  font-weight: bold;
-                  color: skyblue;
-                  font-size: larger;
-                "
-                >Gallery</a
-              >
-            </li>
-
-            <li>
-              <a
-                href="e_admin.html"
-                style="
-                  text-decoration: none;
-                  font-weight: bold;
-                  color: skyblue;
-                  font-size: larger;
-                "
-                >Events</a
-              >
-            </li>
-
-            <li>
-              <a
-                href="show.html"
-                style="
-                  text-decoration: none;
-                  font-weight: bold;
-                  color: skyblue;
-                  font-size: larger;
-                "
-                >show</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <h1 style="color: aliceblue; text-align: center; margin: 2% 0% 2% 0%">
-        Attendance
-      </h1>
-      <hr style="width: 70%; margin: 0% auto 0% auto" />
-
-      <div id="show">
-        <div style="margin-right: 2%">
-          <input type="radio" name="morning" value="morning" />
-          <label for="morning">Morning</label>
-        </div>
-
-        <div>
-          <input type="radio" name="morning" value="evening" />
-          <label for="morning">Evening</label>
-        </div>
-      </div>
-
-      <div id="get_form">
-        <p style="color: white">Loding... Please Wait</p>
-      </div>
-
-      <div style="display: flex; justify-content: center">
-        <button type="submit" style="padding: 0.5% 1% 0.5% 1%">submit</button>
-      </div>
+    <div id="attendanceList" class="attendance-list">
+        <!-- Today's attendance will be displayed here -->
     </div>
 
     <script>
-      $(window).on("load", function () {
-        $("#preloader").fadeOut();
-      });
-    </script>
+        $(document).ready(function() {
+            const apiEndpoint = "http://localhost:3000/user/getAll";
 
-    <script>
-      const getAllUserData = async () => {
-        const ulElement = document.querySelector("#get_form");
-        const res = await fetch("http://localhost:3000/user/getAll");
-        const result = await res.json();
+            // Fetch the list of students
+            $.ajax({
+                url: apiEndpoint,
+                method: "GET",
+                success: function(data) {
+                    data.forEach(function(student) {
+                        const studentItem = `
+                            <div class="student-item">
+                                <span>${student.name}</span>
+                                <label>
+                                    <input type="checkbox" name="attendance_${student.regno}" value="present">
+                                    Present
+                                </label>
+                            </div>
+                        `;
+                        $("#studentList").append(studentItem);
+                    });
+                },
+                error: function(err) {
+                    alert("Error fetching student list. Please try again.");
+                }
+            });
 
-        console.log(result);
+            // Handle the submit button click for marking attendance
+            $("#submitBtn").on("click", function() {
+                let presentStudents = [];
+                let selectedTiming = $("input[name='timing']:checked").val();
 
-        const liElement = result.map((user) => {
-          return ` <div class="content">
-                                <summary for="1" style="font-weight:bold;color: white;"> ${
-                                  user.name
-                                }</summary>
-            
-                                <div class="content">
-                                <div class="btn-div">
-                                        <button type="radio" id="present">present</button>
-                                        <button type="radio" id="absent">absent</button>
-                                    </div> 
-                                </div>
-                            </div>`;
+                // Ensure a timing is selected
+                if (!selectedTiming) {
+                    alert("Please select Morning or Evening.");
+                    return;
+                }
+
+                // Gather all students marked as "Present"
+                $("input[type='checkbox'][value='present']:checked").each(function() {
+                    const studentRegno = $(this).attr('name').split('_')[1];
+                    presentStudents.push(studentRegno);
+                });
+
+                // Send attendance data to the server
+                if (presentStudents.length > 0) {
+                    $.ajax({
+                        url: "http://localhost:3000/attendance/createAttendance",
+                        method: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify({
+                            regno: presentStudents,
+                            slot: selectedTiming === "morning" ? 0 : 1
+                        }),
+                        success: function(data) {
+                            console.log("Attendance submitted:", data);
+                        },
+                        error: function(err) {
+                            console.log("Error submitting attendance:", err);
+                        }
+                    });
+                } else {
+                    alert("No students marked as present.");
+                }
+            });
+
+            // Handle the view attendance button click
+            $("#viewAttendanceBtn").on("click", function() {
+                let selectedTiming = $("input[name='timing']:checked").val();
+
+                // Ensure a timing is selected
+                if (!selectedTiming) {
+                    alert("Please select Morning or Evening.");
+                    return;
+                }
+
+                // Send request to view today's attendance
+                $.ajax({
+                    url: "http://localhost:3000/attendance/getTodayAttendance",
+                    method: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        slot: selectedTiming === "morning" ? 0 : 1
+                    }),
+                    success: function(data) {
+                        console.log("Today's Attendance:", data[0]);
+
+                        // Clear previous attendance list
+                        $("#attendanceList").empty();
+
+                        // Display the registration numbers of present students
+                        if (data[0].regno && data[0].regno.length > 0) {
+                            data[0].regno.forEach(function(regno) {
+                                $("#attendanceList").append(`<p>Regno: ${regno}</p>`);
+                            });
+                        } else {
+                            $("#attendanceList").append("<p>No students marked as present.</p>");
+                        }
+                    },
+                    error: function(err) {
+                        console.log("Error fetching today's attendance:", err);
+                        $("#attendanceList").append("<p>Error fetching attendance. Please try again.</p>");
+                    }
+                });
+            });
         });
-
-        ulElement.innerHTML = liElement;
-      };
-
-      getAllUserData();
-
-      const update = async (id) => {
-        const name = prompt("Enter Event Name and Result");
-
-        const result = prompt("Enter Result");
-
-        const performance = {
-          name,
-          result,
-        };
-        console.log(performance);
-
-        try {
-          const res = await fetch(`http://localhost:3000/user/update/${id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(performance),
-          });
-
-          const data = res.json();
-
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-
-          alert("User data submitted successfully!");
-          window.location.reload();
-        } catch (error) {
-          console.error("Error:", error);
-          alert("Failed to submit user data. Please try again.");
-        }
-      };
-
-      const deleteUser = async (id) => {
-        try {
-          const res = await fetch(`http://localhost:3000/user/delete/${id}`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          if (!res.ok) {
-            throw new Error("Network response was not ok");
-          }
-
-          const result = await res.json();
-          console.log(result?.message);
-
-          // Handle success scenario (e.g., show success message, clear form fields)
-          alert("User data submitted successfully!");
-          location.reload();
-
-          // Reset the form fields
-        } catch (error) {
-          console.error("Error:", error);
-          // Handle error scenario (e.g., show error message)
-          alert("Failed to submit user data. Please try again.");
-        }
-      };
     </script>
-  </body>
+
+</body>
 </html>
